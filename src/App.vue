@@ -1,30 +1,36 @@
 <template>
-  <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
+  <div class="q-pa-md">
+    <q-layout view="lHh Lpr lff">
+      <q-header elevated class="bg-cyan-8">
+        <q-toolbar>
+          <q-toolbar-title>AlonsoAM</q-toolbar-title>
+        </q-toolbar>
+      </q-header>
+
+      <q-page-container>
+        <q-page padding>
+          <router-view></router-view>
+          <!-- place QPageScroller at end of page -->
+          <q-page-scroller position="bottom-right" :scroll-offset="150" :offset="[18, 18]">
+            <q-btn fab icon="keyboard_arrow_up" color="primary" />
+          </q-page-scroller>
+        </q-page>
+      </q-page-container>
+    </q-layout>
   </div>
-  <router-view/>
 </template>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
 
-#nav {
-  padding: 30px;
-}
+<script>
+import { ref } from 'vue'
 
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
+export default {
+  name: 'LayoutDefault',
 
-#nav a.router-link-exact-active {
-  color: #42b983;
+  setup () {
+    return {
+      drawer: ref(false)
+    }
+  }
 }
-</style>
+</script>
